@@ -20,17 +20,19 @@ class WorldController < ApplicationController
   end
 
   def search_results
-    @keywords = params[:keyword]
+    @keyword = params[:keyword]
     @search_selected = params[:mandatory_military_service]
 
+    session[:recent_search] = @keyword
+
     if @search_selected == 'All Country'
-      @country = Country.where("name LIKE '%#{params[:keywords]}%'")
+      @country = Country.where("name LIKE '%#{params[:keyword]}%'")
     elsif @search_selected == 'Country with mandatory military service'
-      @country = Country.where("name LIKE '%#{params[:keywords]}%'").where(:mandatory_military_service => true)
+      @country = Country.where("name LIKE '%#{params[:keyword]}%'").where(:mandatory_military_service => true)
     elsif @search_selected == 'Countries without mandatory military service'
-      @country = Country.where("name LIKE '%#{params[:keywords]}%'").where(:mandatory_military_service => false)
+      @country = Country.where("name LIKE '%#{params[:keyword]}%'").where(:mandatory_military_service => false)
     end
-    
+
     if @country.empty?
       flash[:error] = "Country doesn't exist"
       redirect_to search_path

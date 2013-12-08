@@ -1,8 +1,14 @@
-<h2>Search Customer</h2>
+<h2>Search Country</h2>
+
+<% if (session[:recent_search]) %>
+	<%= 'Hello Again' %>
+<% else %>
+	<%= "You're Searching for the first time" %>
+<% end %>
 
 <%= form_tag search_results_path do %>
 	<%= label_tag 'Search' %>
 	<%= text_field_tag :keyword %>
-	<%= select_tag :mandatorymilitary_service, options_for_select(@search_options)
+	<%= select_tag :mandatorymilitary_service, options_for_select(@search_options) %>
 	<%= submit_tag 'Search' %>
 <% end %>
