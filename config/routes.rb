@@ -16,6 +16,9 @@ PrepChallenge::Application.routes.draw do
   match 'by_age' => 'world#by_age', :as => 'by_age', :via => :get
   match 'by_required_service' => 'world#by_required_service', :as => 'by_required_service', :via => :get
 
+  match 'search' => 'world#search', :as => 'search', :via => :get
+  match 'search_results' => 'world#search_results', :as => 'search_results', :via => :post
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
