@@ -3,5 +3,6 @@
 <%= form_tag search_results_path do %>
 	<%= label_tag 'Search' %>
 	<%= text_field_tag :keyword %>
+	<%= select_tag :mandatorymilitary_service, options_for_select(@search_options)
 	<%= submit_tag 'Search' %>
 <% end %>
