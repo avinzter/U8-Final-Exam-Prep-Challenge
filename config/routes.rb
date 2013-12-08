@@ -1,13 +1,20 @@
 PrepChallenge::Application.routes.draw do
-  get "world/index"
+  #get "world/index"
 
-  get "world/by_population"
+  #get "world/by_population"
 
-  get "world/by_age"
+  #get "world/by_age"
 
-  get "world/by_required_service"
+  #get "world/by_required_service"
 
   resources :countries
+
+  root :to => "countries#index"
+
+  match 'world' => 'world#index', :as => 'world', :via => :get
+  match 'by_population' => 'world#by_population', :as => 'by_population', :via => :get
+  match 'by_age' => 'world#by_age', :as => 'by_age', :via => :get
+  match 'by_required_service' => 'world#by_required_service', :as => 'by_required_service', :via => :get
 
 
   # The priority is based upon order of creation:
