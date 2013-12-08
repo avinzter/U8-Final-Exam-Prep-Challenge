@@ -1,4 +1,12 @@
 PrepChallenge::Application.routes.draw do
+  get "world/index"
+
+  get "world/by_population"
+
+  get "world/by_age"
+
+  get "world/by_required_service"
+
   resources :countries
 
 
